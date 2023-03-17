@@ -1,15 +1,37 @@
 import "./App.css";
-import GreetingsFunc from "./components/GreetingsFunc";
-import GreetingsClass from "./components/GreetingsClass";
+import React from "react";
+// import GreetingsFunc from "./components/GreetingsFunc";
+// import GreetingsClass from "./components/GreetingsClass";
+import Recipe from "./components/Recipe";
+import { recipes } from "./data";
 
 function App() {
+	const RecipeCards = recipes.map((recipe) => (
+		<Recipe key={recipe.id} recipeItems={recipe} />
+	));
+
 	return (
 		<div className="App">
-			<GreetingsFunc name="Jane Doe" occupation="engineer" />
-			<GreetingsFunc name="John Doe" />
-			<GreetingsFunc name="Joe Doe" />
-			<GreetingsClass name="Jack Doe" occupation="accountant" />
-			<GreetingsClass />
+			<h1>Menu</h1>
+			{React.createElement(
+				"div",
+				null,
+				React.createElement(
+					"ul",
+					null,
+					React.createElement(
+						"li",
+						null,
+						"New menu items out now: 🍕🍔🍟🥓🌮🥪🥙🥗!"
+					),
+					React.createElement(
+						"li",
+						null,
+						"Home deliveries coming soon."
+					)
+				)
+			)}
+			{RecipeCards}
 		</div>
 	);
 }
